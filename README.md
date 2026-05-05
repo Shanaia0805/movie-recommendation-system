@@ -1,3 +1,5 @@
+![CineVault Banner](assets/banner.png)
+
 # CineVault — Movie Management System
 
 A full-stack movie management and recommendation platform built with **Spring Boot**, **React + TypeScript**, and **Python FastAPI**, powered by the [MovieLens 32M](https://grouplens.org/datasets/movielens/) dataset.
