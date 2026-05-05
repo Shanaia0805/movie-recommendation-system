@@ -1,0 +1,68 @@
+name: Continuous Deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: 
+      name: AWS_DEPLOYMENT
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Packer
+        run: |
+          curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+          sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+          sudo apt update && sudo apt install -y packer
+
+      - name: Pack the image
+        run: |
+          mvn clean install -DskipTests
+          mkdir -p packer
+          cp target/movieServer-0.0.1-SNAPSHOT.jar packer/movieServer-0.0.1-SNAPSHOT.jar
+          
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
+            
+      - name: Install GitHub CLI
+        run: sudo apt-get install -y gh
+        
+      - name: Validate and Build
+        run: |
+          cd packer
+          packer init .
+          packer validate .
+          packer build -force . | tee packer_output.log
+
+          WEBAPP_AMI_ID=$(grep -A1 'AMIs were created:' packer_output.log | grep -oE 'ami-[0-9a-f]{17}')
+          echo "WEBAPP_AMI_ID=$WEBAPP_AMI_ID" >> $GITHUB_ENV
+          echo "New AMI ID: $WEBAPP_AMI_ID"
+          export WEBAPP_AMI_ID
+          echo "Saving WEBAPP_AMI_ID to TF repo"
+          gh secret set WEBAPP_AMI_ID -b"$WEBAPP_AMI_ID" -R neu-csye6245/cloud-project-terraform-aws-infra-Shanaia0805
+          
+          # Verify the secret was updated
+          echo "Verifying WEBAPP_AMI_ID update"
+          gh secret list -R neu-csye6245/cloud-project-terraform-aws-infra-Shanaia0805
+        env:
+          GH_TOKEN: ${{ secrets.PAT }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+
+      # - name: Validate and Build
+      #   run: |
+      #       cd mysql-packer
+      #       packer init .
+      #       packer validate .
+      #       packer build -force . | tee packer_output.log

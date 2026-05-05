@@ -1,0 +1,11 @@
+root@ip-10-0-1-202:~# curl -X GET https://nayop8vcl6.execute-api.us-east-2.amazonaws.com/v3/v3/poster/12345
+{"movie_id": 12345, "poster_url": "https://example.com/posters/12345.jpg", "poster_size": 1024000, "message": "post details fetched successfully"}
+
+root@ip-10-0-1-202:~# curl -X GET https://nayop8vcl6.execute-api.us-east-2.amazonaws.com/v3/v3/poster/
+{"error": "movie id is required"}
+
+root@ip-10-0-1-202:~# curl -X GET https://nayop8vcl6.execute-api.us-east-2.amazonaws.com/v3/v3/poster/0
+{"error": "movie id is out of range"}
+
+root@ip-10-0-1-202:~# curl -X GET https://nayop8vcl6.execute-api.us-east-2.amazonaws.com/v3/v3/poster/67890
+{"movie_id": 67890, "poster_url": "https://example.com/posters/67890.jpg", "poster_size": 1024000, "message": "post details fetched successfully"}

@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: movieServer
+
+security:
+  jwt:
+    secret: ${JWT_SECRET}
+    expirationMs: 2500000

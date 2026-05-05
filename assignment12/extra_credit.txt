@@ -1,0 +1,2 @@
+root@ip-10-0-1-202:~# curl -X GET https://nayop8vcl6.execute-api.us-east-2.amazonaws.com/v3/v3/poster/862
+{"movie_id": 862, "poster_url": "https://image.tmdb.org/t/p/w500/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg", "poster_size": 1024000, "message": "poster details fetched successfully"}

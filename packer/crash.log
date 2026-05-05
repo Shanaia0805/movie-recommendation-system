@@ -1,0 +1,139 @@
+2025/02/13 17:33:19 [INFO] Packer version: 1.12.0 [go1.22.9 darwin arm64]
+2025/02/13 17:33:19 [INFO] PACKER_CONFIG env var not set; checking the default config file path
+2025/02/13 17:33:19 [INFO] PACKER_CONFIG env var set; attempting to open config file: /Users/a1-6/.packerconfig
+2025/02/13 17:33:19 [WARN] Config file doesn't exist: /Users/a1-6/.packerconfig
+2025/02/13 17:33:19 [INFO] Setting cache directory: /Users/a1-6/.cache/packer
+2025/02/13 17:33:19 [TRACE] listing potential installations for "github.com/hashicorp/amazon" that match "~> 1.0". plugingetter.ListInstallationsOptions{PluginDirectory:"/Users/a1-6/.config/packer/plugins", BinaryInstallationOptions:plugingetter.BinaryInstallationOptions{APIVersionMajor:"5", APIVersionMinor:"0", OS:"darwin", ARCH:"arm64", Ext:"", Checksummers:[]plugingetter.Checksummer{plugingetter.Checksummer{Type:"sha256", Hash:(*sha256.digest)(0x140006b4000)}}, ReleasesOnly:false}}
+2025/02/13 17:33:20 [TRACE] Found the following "github.com/hashicorp/amazon" installations: [{/Users/a1-6/.config/packer/plugins/github.com/hashicorp/amazon/packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 v1.3.4 x5.0}]
+2025/02/13 17:33:20 [INFO] found external [chroot ebs ebssurrogate ebsvolume instance] builders from amazon plugin
+2025/02/13 17:33:20 [INFO] found external [import] post-processors from amazon plugin
+2025/02/13 17:33:20 found external [ami parameterstore secretsmanager] datasource from amazon plugin
+2025/02/13 17:33:20 plugin "/Users/a1-6/.config/packer/plugins/github.com/hashicorp/amazon/packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64" does not support Protobuf, forcing use of Gob
+2025/02/13 17:33:20 [TRACE] listing potential installations for <nil> that match "". plugingetter.ListInstallationsOptions{PluginDirectory:"/Users/a1-6/.config/packer/plugins", BinaryInstallationOptions:plugingetter.BinaryInstallationOptions{APIVersionMajor:"5", APIVersionMinor:"0", OS:"darwin", ARCH:"arm64", Ext:"", Checksummers:[]plugingetter.Checksummer{plugingetter.Checksummer{Type:"sha256", Hash:(*sha256.digest)(0x14000716180)}}, ReleasesOnly:false}}
+2025/02/13 17:33:20 [INFO] found external [chroot ebs ebssurrogate ebsvolume instance] builders from amazon plugin
+2025/02/13 17:33:20 [INFO] found external [import] post-processors from amazon plugin
+2025/02/13 17:33:20 found external [ami parameterstore secretsmanager] datasource from amazon plugin
+2025/02/13 17:33:20 [INFO] Starting external plugin /Users/a1-6/.config/packer/plugins/github.com/hashicorp/amazon/packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 start builder ebs
+2025/02/13 17:33:20 Starting plugin: /Users/a1-6/.config/packer/plugins/github.com/hashicorp/amazon/packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 []string{"/Users/a1-6/.config/packer/plugins/github.com/hashicorp/amazon/packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64", "start", "builder", "ebs"}
+2025/02/13 17:33:20 Waiting for RPC address for: /Users/a1-6/.config/packer/plugins/github.com/hashicorp/amazon/packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64
+2025/02/13 17:33:20 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: 2025/02/13 17:33:20 Plugin address: unix /var/folders/jv/qrh6d0_s40d0l59m91nkghsr0000gn/T/packer-plugin1478030558
+2025/02/13 17:33:20 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: 2025/02/13 17:33:20 Waiting for connection...
+2025/02/13 17:33:20 Received unix RPC address for /Users/a1-6/.config/packer/plugins/github.com/hashicorp/amazon/packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64: addr is /var/folders/jv/qrh6d0_s40d0l59m91nkghsr0000gn/T/packer-plugin1478030558
+2025/02/13 17:33:20 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: 2025/02/13 17:33:20 Serving a plugin connection...
+2025/02/13 17:33:20 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: 2025/02/13 17:33:20 [TRACE] starting builder ebs
+2025/02/13 17:33:20 [DEBUG] - common: receiving ConfigSpec as gob
+2025/02/13 17:33:20 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: 2025/02/13 17:33:20 [INFO] (aws): No AWS timeout and polling overrides have been set. Packer will default to waiter-specific delays and timeouts. If you would like to customize the length of time between retries and max number of retries you may do so by setting the environment variables AWS_POLL_DELAY_SECONDS and AWS_MAX_ATTEMPTS or the configuration options aws_polling_delay_seconds and aws_polling_max_attempts to your desired values.
+2025/02/13 17:33:20 [DEBUG] - common: receiving ConfigSpec as gob
+2025/02/13 17:33:20 [INFO] Starting external plugin /opt/homebrew/bin/packer execute packer-provisioner-file
+2025/02/13 17:33:20 Starting plugin: /opt/homebrew/bin/packer []string{"/opt/homebrew/bin/packer", "execute", "packer-provisioner-file"}
+2025/02/13 17:33:20 Waiting for RPC address for: /opt/homebrew/bin/packer
+2025/02/13 17:33:20 packer-provisioner-file plugin: [INFO] Packer version: 1.12.0 [go1.22.9 darwin arm64]
+2025/02/13 17:33:20 packer-provisioner-file plugin: [INFO] PACKER_CONFIG env var not set; checking the default config file path
+2025/02/13 17:33:20 packer-provisioner-file plugin: [INFO] PACKER_CONFIG env var set; attempting to open config file: /Users/a1-6/.packerconfig
+2025/02/13 17:33:20 packer-provisioner-file plugin: [WARN] Config file doesn't exist: /Users/a1-6/.packerconfig
+2025/02/13 17:33:20 packer-provisioner-file plugin: [INFO] Setting cache directory: /Users/a1-6/.cache/packer
+2025/02/13 17:33:20 Received unix RPC address for /opt/homebrew/bin/packer: addr is /var/folders/jv/qrh6d0_s40d0l59m91nkghsr0000gn/T/packer-plugin2013949233
+2025/02/13 17:33:20 packer-provisioner-file plugin: Plugin address: unix /var/folders/jv/qrh6d0_s40d0l59m91nkghsr0000gn/T/packer-plugin2013949233
+2025/02/13 17:33:20 packer-provisioner-file plugin: Waiting for connection...
+2025/02/13 17:33:20 packer-provisioner-file plugin: Serving a plugin connection...
+2025/02/13 17:33:20 packer-provisioner-file plugin: [DEBUG] - common: sending ConfigSpec as gob
+2025/02/13 17:33:20 [DEBUG] - common: receiving ConfigSpec as gob
+2025/02/13 17:33:20 packer-provisioner-file plugin: [DEBUG] - common: sending ConfigSpec as gob
+2025/02/13 17:33:20 [DEBUG] - common: receiving ConfigSpec as gob
+2025/02/13 17:33:20 [INFO] Starting external plugin /opt/homebrew/bin/packer execute packer-provisioner-file
+2025/02/13 17:33:20 Starting plugin: /opt/homebrew/bin/packer []string{"/opt/homebrew/bin/packer", "execute", "packer-provisioner-file"}
+2025/02/13 17:33:20 Waiting for RPC address for: /opt/homebrew/bin/packer
+2025/02/13 17:33:20 packer-provisioner-file plugin: [INFO] Packer version: 1.12.0 [go1.22.9 darwin arm64]
+2025/02/13 17:33:20 packer-provisioner-file plugin: [INFO] PACKER_CONFIG env var not set; checking the default config file path
+2025/02/13 17:33:20 packer-provisioner-file plugin: [INFO] PACKER_CONFIG env var set; attempting to open config file: /Users/a1-6/.packerconfig
+2025/02/13 17:33:20 packer-provisioner-file plugin: [WARN] Config file doesn't exist: /Users/a1-6/.packerconfig
+2025/02/13 17:33:20 packer-provisioner-file plugin: [INFO] Setting cache directory: /Users/a1-6/.cache/packer
+2025/02/13 17:33:20 Received unix RPC address for /opt/homebrew/bin/packer: addr is /var/folders/jv/qrh6d0_s40d0l59m91nkghsr0000gn/T/packer-plugin3872814899
+2025/02/13 17:33:20 packer-provisioner-file plugin: Plugin address: unix /var/folders/jv/qrh6d0_s40d0l59m91nkghsr0000gn/T/packer-plugin3872814899
+2025/02/13 17:33:20 packer-provisioner-file plugin: Waiting for connection...
+2025/02/13 17:33:20 packer-provisioner-file plugin: Serving a plugin connection...
+2025/02/13 17:33:20 packer-provisioner-file plugin: [DEBUG] - common: sending ConfigSpec as gob
+2025/02/13 17:33:20 [DEBUG] - common: receiving ConfigSpec as gob
+2025/02/13 17:33:20 packer-provisioner-file plugin: [DEBUG] - common: sending ConfigSpec as gob
+2025/02/13 17:33:20 [DEBUG] - common: receiving ConfigSpec as gob
+2025/02/13 17:33:20 [INFO] Starting external plugin /opt/homebrew/bin/packer execute packer-provisioner-shell
+2025/02/13 17:33:20 Starting plugin: /opt/homebrew/bin/packer []string{"/opt/homebrew/bin/packer", "execute", "packer-provisioner-shell"}
+2025/02/13 17:33:20 Waiting for RPC address for: /opt/homebrew/bin/packer
+2025/02/13 17:33:20 packer-provisioner-shell plugin: [INFO] Packer version: 1.12.0 [go1.22.9 darwin arm64]
+2025/02/13 17:33:20 packer-provisioner-shell plugin: [INFO] PACKER_CONFIG env var not set; checking the default config file path
+2025/02/13 17:33:20 packer-provisioner-shell plugin: [INFO] PACKER_CONFIG env var set; attempting to open config file: /Users/a1-6/.packerconfig
+2025/02/13 17:33:20 packer-provisioner-shell plugin: [WARN] Config file doesn't exist: /Users/a1-6/.packerconfig
+2025/02/13 17:33:20 packer-provisioner-shell plugin: [INFO] Setting cache directory: /Users/a1-6/.cache/packer
+2025/02/13 17:33:20 Received unix RPC address for /opt/homebrew/bin/packer: addr is /var/folders/jv/qrh6d0_s40d0l59m91nkghsr0000gn/T/packer-plugin3362052288
+2025/02/13 17:33:20 packer-provisioner-shell plugin: Plugin address: unix /var/folders/jv/qrh6d0_s40d0l59m91nkghsr0000gn/T/packer-plugin3362052288
+2025/02/13 17:33:20 packer-provisioner-shell plugin: Waiting for connection...
+2025/02/13 17:33:20 packer-provisioner-shell plugin: Serving a plugin connection...
+2025/02/13 17:33:20 packer-provisioner-shell plugin: [DEBUG] - common: sending ConfigSpec as gob
+2025/02/13 17:33:20 [DEBUG] - common: receiving ConfigSpec as gob
+2025/02/13 17:33:20 packer-provisioner-shell plugin: [DEBUG] - common: sending ConfigSpec as gob
+2025/02/13 17:33:20 [DEBUG] - common: receiving ConfigSpec as gob
+2025/02/13 17:33:20 ui: [1;32mamazon-ebs.webapp: output will be in this color.[0m
+2025/02/13 17:33:20 ui: 
+2025/02/13 17:33:20 Build debug mode: false
+2025/02/13 17:33:20 Force build: false
+2025/02/13 17:33:20 On error: 
+2025/02/13 17:33:20 Waiting on builds to complete...
+2025/02/13 17:33:20 Starting build run: amazon-ebs.webapp
+2025/02/13 17:33:20 Running builder: amazon-ebs
+2025/02/13 17:33:20 [INFO] (telemetry) Starting builder amazon-ebs.webapp
+2025/02/13 17:33:20 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: 2025/02/13 17:33:20 [INFO] AWS Auth provider used: "SharedCredentialsProvider"
+2025/02/13 17:33:20 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: 2025/02/13 17:33:20 Found region us-west-2
+2025/02/13 17:33:20 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: 2025/02/13 17:33:20 [INFO] AWS Auth provider used: "SharedCredentialsProvider"
+2025/02/13 17:33:20 ui: [1;32m==> amazon-ebs.webapp: Prevalidating any provided VPC information[0m
+2025/02/13 17:33:20 ui: [1;32m==> amazon-ebs.webapp: Prevalidating AMI Name: webapp-ami-1739496800[0m
+2025/02/13 17:33:20 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: 2025/02/13 17:33:20 Using AMI Filters {
+2025/02/13 17:33:20 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin:   ImageIds: ["ami-0acefc55c3a331fa8"],
+2025/02/13 17:33:20 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin:   IncludeDeprecated: false
+2025/02/13 17:33:20 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: }
+2025/02/13 17:33:20 ui: [0;32m    amazon-ebs.webapp: Found Image ID: ami-0acefc55c3a331fa8[0m
+2025/02/13 17:33:20 ui: [1;32m==> amazon-ebs.webapp: Setting public IP address to true on instance without a subnet ID[0m
+2025/02/13 17:33:20 ui: [1;32m==> amazon-ebs.webapp: No VPC ID provided, Packer will use the default VPC[0m
+2025/02/13 17:33:21 ui: [1;32m==> amazon-ebs.webapp: Inferring subnet from the selected VPC "vpc-07e28cd38c2894d65"[0m
+2025/02/13 17:33:21 ui: [1;32m==> amazon-ebs.webapp: Failed to filter subnets/AZ for the requested machine type "t2.micro": no AZ match the requested machine type "t2.micro"[0m
+2025/02/13 17:33:21 ui: [1;32m==> amazon-ebs.webapp: This may result in Packer picking a subnet/AZ that can't host the requested machine type[0m
+2025/02/13 17:33:21 ui: [1;32m==> amazon-ebs.webapp: Please check that you have the permissions required to run DescribeInstanceTypeOfferings and try again.[0m
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: panic: runtime error: index out of range [-1]
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: 
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: goroutine 59 [running]:
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: github.com/hashicorp/packer-plugin-amazon/builder/common.mostFreeSubnet(...)
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: 	github.com/hashicorp/packer-plugin-amazon/builder/common/step_network_info.go:56
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: github.com/hashicorp/packer-plugin-amazon/builder/common.(*StepNetworkInfo).GetDefaultVPCAndSubnet(0x1400089a340, {0x1065980a0, 0x140007940c0}, {0x1066527b8, 0x1400083a150}, {0x10579e85c?, 0x14000940278?})
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: 	github.com/hashicorp/packer-plugin-amazon/builder/common/step_network_info.go:250 +0x8e4
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: github.com/hashicorp/packer-plugin-amazon/builder/common.(*StepNetworkInfo).Run(0x1400089a340, {0x105a009e5?, 0x1400083c0f0?}, {0x106592768, 0x14000794750})
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: 	github.com/hashicorp/packer-plugin-amazon/builder/common/step_network_info.go:156 +0xb68
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: github.com/hashicorp/packer-plugin-sdk/multistep.(*BasicRunner).Run(0x140007948d0, {0x106592880, 0x1400083c0f0}, {0x106592768, 0x14000794750})
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: 	github.com/hashicorp/packer-plugin-sdk@v0.5.4/multistep/basic_runner.go:73 +0x294
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: github.com/hashicorp/packer-plugin-amazon/builder/ebs.(*Builder).Run(0x1400047aa80, {0x106592880, 0x1400083c0f0}, {0x1065980a0?, 0x140007940c0}, {0x10657c3e0?, 0x14000808000})
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: 	github.com/hashicorp/packer-plugin-amazon/builder/ebs/builder.go:472 +0x25f0
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: github.com/hashicorp/packer-plugin-sdk/rpc.(*BuilderServer).Run(0x14000834780, 0x4a0f5e8?, 0x1400000e0d0)
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: 	github.com/hashicorp/packer-plugin-sdk@v0.5.4/rpc/builder.go:120 +0x1a0
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: reflect.Value.call({0x14000812ea0?, 0x1400083a810?, 0x13?}, {0x1059fad25, 0x4}, {0x14000625ef8, 0x3, 0x3?})
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: 	reflect/value.go:596 +0x994
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: reflect.Value.Call({0x14000812ea0?, 0x1400083a810?, 0x0?}, {0x140000a6ef8?, 0x0?, 0x0?})
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: 	reflect/value.go:380 +0x94
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: net/rpc.(*service).call(0x140008347c0, 0x0?, 0x0?, 0x1400068c010, 0x14000204880, 0x0?, {0x10604ce00?, 0x1400000e0cc?, 0x0?}, {0x105ffa800?, ...}, ...)
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: 	net/rpc/server.go:382 +0x204
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: created by net/rpc.(*Server).ServeCodec in goroutine 1
+2025/02/13 17:33:21 packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64 plugin: 	net/rpc/server.go:479 +0x304
+2025/02/13 17:33:21 [INFO] (telemetry) ending amazon-ebs.webapp
+2025/02/13 17:33:21 /Users/a1-6/.config/packer/plugins/github.com/hashicorp/amazon/packer-plugin-amazon_v1.3.4_x5.0_darwin_arm64: plugin process exited
+2025/02/13 17:33:21 ui error: [1;31mBuild 'amazon-ebs.webapp' errored after 985 milliseconds 269 microseconds: unexpected EOF[0m
+2025/02/13 17:33:21 ui: 
+==> Wait completed after 986 milliseconds 805 microseconds
+2025/02/13 17:33:21 machine readable: error-count []string{"1"}
+2025/02/13 17:33:21 ui error: 
+==> Some builds didn't complete successfully and had errors:
+2025/02/13 17:33:21 machine readable: amazon-ebs.webapp,error []string{"unexpected EOF"}
+2025/02/13 17:33:21 ui error: --> amazon-ebs.webapp: unexpected EOF
+2025/02/13 17:33:21 ui: 
+==> Builds finished but no artifacts were created.
+2025/02/13 17:33:21 [INFO] (telemetry) Finalizing.
+2025/02/13 17:33:21 waiting for all plugin processes to complete...
+2025/02/13 17:33:21 /opt/homebrew/bin/packer: plugin process exited
+2025/02/13 17:33:21 /opt/homebrew/bin/packer: plugin process exited
+2025/02/13 17:33:21 /opt/homebrew/bin/packer: plugin process exited

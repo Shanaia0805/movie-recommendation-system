@@ -1,0 +1,15 @@
+{
+    "id": "nayop8vcl6",
+    "name": "MoviePosterAPI",
+    "createdDate": "2025-04-08T16:18:43-07:00",
+    "apiKeySource": "HEADER",
+    "endpointConfiguration": {
+        "types": [
+            "PRIVATE"
+        ]
+    },
+    "policy": "{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":[{\\\"Effect\\\":\\\"Allow\\\",\\\"Principal\\\":\\\"*\\\",\\\"Action\\\":\\\"execute-api:Invoke\\\",\\\"Resource\\\":\\\"arn:aws:execute-api:us-east-2:050451367318:nayop8vcl6\\/*\\\",\\\"Condition\\\":{\\\"StringEquals\\\":{\\\"aws:SourceVpce\\\":\\\"vpce-0f0ddaf7234db32a2\\\"}}}]}",
+    "tags": {},
+    "disableExecuteApiEndpoint": false,
+    "rootResourceId": "ck0lcjycni"
+}

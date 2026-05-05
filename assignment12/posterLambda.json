@@ -1,0 +1,59 @@
+{
+    "FunctionName": "posterLambda",
+    "FunctionArn": "arn:aws:lambda:us-east-2:050451367318:function:posterLambda",
+    "Runtime": "python3.13",
+    "Role": "arn:aws:iam::050451367318:role/service-role/posterLambda-role-msvm5sxm",
+    "Handler": "lambda_function.lambda_handler",
+    "CodeSize": 847,
+    "Description": "",
+    "Timeout": 3,
+    "MemorySize": 128,
+    "LastModified": "2025-04-09T18:02:36.000+0000",
+    "CodeSha256": "/LmkaC+gwr0njgL/gvnpBuHmoqXQg5HpW+0qnQxRBis=",
+    "Version": "$LATEST",
+    "VpcConfig": {
+        "SubnetIds": [
+            "subnet-0a44975ee035c0134"
+        ],
+        "SecurityGroupIds": [
+            "sg-06dfe8fcea8416324"
+        ],
+        "VpcId": "vpc-05126223ca878cb41",
+        "Ipv6AllowedForDualStack": false
+    },
+    "Environment": {
+        "Variables": {
+            "TMDB_API_KEY": "b3fd7ec1d08a3b4aa423da36abc1c970"
+        }
+    },
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "ab3e2b8f-99b8-4644-9899-17c04ea3de45",
+    "Layers": [
+        {
+            "Arn": "arn:aws:lambda:us-east-2:050451367318:layer:requests-layer:2",
+            "CodeSize": 955066
+        }
+    ],
+    "State": "Active",
+    "LastUpdateStatus": "Successful",
+    "PackageType": "Zip",
+    "Architectures": [
+        "x86_64"
+    ],
+    "EphemeralStorage": {
+        "Size": 512
+    },
+    "SnapStart": {
+        "ApplyOn": "None",
+        "OptimizationStatus": "Off"
+    },
+    "RuntimeVersionConfig": {
+        "RuntimeVersionArn": "arn:aws:lambda:us-east-2::runtime:f713ac0afb982fcdf9bac88eaa00c31352efae870b225c19f1603fe79159a6f1"
+    },
+    "LoggingConfig": {
+        "LogFormat": "Text",
+        "LogGroup": "/aws/lambda/posterLambda"
+    }
+}
