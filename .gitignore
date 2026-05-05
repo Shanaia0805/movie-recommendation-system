@@ -47,7 +47,15 @@ recommendation/*.pyc
 recommendation/.venv/
 recommendation/venv/
 
-### Environment & Secrets ###
-*.env
-.env.localpacker/credentials
+# AWS Keys and Secrets
+*.pem
 packer/credentials
+packer/variables.pkrvars.hcl
+
+# Datasets
+ml-32m/
+*.csv
+*.zip
+
+# OS files
+.DS_Store

@@ -1,0 +1,13 @@
+[Unit]
+Description=CineVault Python Recommendation Service
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/opt/cinevault/recommendation
+ExecStart=/home/ubuntu/venv/bin/uvicorn main:app --port 8000 --host 0.0.0.0
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

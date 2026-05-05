@@ -1,0 +1,15 @@
+[Unit]
+Description=CineVault Spring Boot Backend
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/opt/cinevault/backend
+# Environment variables will be passed during runtime or via a .env file
+ExecStart=/usr/bin/java -jar app.jar
+SuccessExitStatus=143
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
