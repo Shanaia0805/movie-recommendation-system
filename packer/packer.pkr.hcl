@@ -19,7 +19,7 @@ variable "source_ami" {
 
 source "amazon-ebs" "cinevault" {
   ami_name      = "cinevault-fullstack-{{timestamp}}"
-  instance_type = "t3.medium" # Use a medium instance for building to speed up Python model prep
+  instance_type = "t3.micro" # Use a micro instance as requested
   region        = var.aws_region
   subnet_id     = "subnet-02fca54d51d781b9c"
   source_ami    = var.source_ami

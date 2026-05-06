@@ -72,7 +72,7 @@ jobs:
           version: "latest"
 
       - name: Packer Init
-        run: packer init packer/
+        run: packer init packer/packer.pkr.hcl
 
       - name: Packer Build
         run: packer build packer/packer.pkr.hcl
