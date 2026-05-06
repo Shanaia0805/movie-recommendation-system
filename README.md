@@ -9,28 +9,33 @@ A full-stack movie management and recommendation platform built with **Spring Bo
 ## Architecture
 
 ```
-┌─────────────────────────────────────────────────────┐
-│              React + TypeScript Frontend             │
-│              localhost:3000  (Vite server)           │
-│   /v1/* → proxy → Spring Boot (8080)                │
-│   /recommend/* → proxy → Python FastAPI (8000)      │
-└─────────────────────────────────────────────────────┘
-          │                        │
-          ▼                        ▼
-┌──────────────────┐    ┌─────────────────────────┐
-│  Spring Boot API │    │  Python Recommendation  │
-│   port 8080      │    │  Service  port 8000      │
-│   Java 17        │    │  FastAPI + scikit-learn  │
-└────────┬─────────┘    └────────────┬────────────┘
-         │                           │
-         └──────────┬────────────────┘
-                    ▼
-          ┌──────────────────┐
-          │  MySQL Database  │
-          │  db: recommend   │
-          │  ~87K movies     │
-          │  32M ratings     │
-          └──────────────────┘
+┌─────────────────────────────────────────────────────────────┐
+│                 React + TypeScript Frontend                 │
+│                 localhost:3000 (Vite)                       │
+└─────────────────────────────┬───────────────────────────────┘
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    Nginx Reverse Proxy                      │
+│                    (Ports 80 / 443)                         │
+└────────┬────────────────────────────────────┬───────────────┘
+         │                                    │
+         ▼                                    ▼
+┌──────────────────┐               ┌─────────────────────────┐
+│ Spring Boot API  │               │ Python Recommendation   │
+│ (Java 17)        │               │ Service (FastAPI)       │
+└─┬──────┬───────┬─┘               └────────────┬────────────┘
+  │      │       │                              │
+  ▼      │       ▼                              │
+┌─────┐  │ ┌───────────┐                        │
+│Redis│  │ │   Kafka   │──(Async processing)──┐ │
+└─────┘  │ └───────────┘                      │ │
+         ▼                                    ▼ ▼
+┌─────────────────────────────────────────────────────────────┐
+│                        MySQL Database                       │
+│                        (~87K movies, 32M ratings)           │
+└─────────────────────────────────────────────────────────────┘
+
+[Observability Stack: Prometheus (9090) + Grafana (3000) + Zipkin (9411)]
 ```
 
 ---
@@ -39,26 +44,44 @@ A full-stack movie management and recommendation platform built with **Spring Bo
 
 | Layer | Technology |
 |-------|-----------|
-| Frontend | React 18, **TypeScript**, Vite 5, React Router 6, Axios |
-| Backend | Spring Boot 3.1.5, MyBatis, Java 17 |
-| Recommendation | Python 3, FastAPI, scikit-learn (TF-IDF + Cosine Similarity) |
-| Database | MySQL 8.0 |
-| Auth | JWT (JSON Web Token) |
-
-| Data | MovieLens 32M (87,585 movies, 32M ratings) |
-| Cloud (original) | AWS EC2, NLB, Auto Scaling, Packer, Terraform |
-| CI/CD (original) | GitHub Actions → Packer AMI build → AWS deploy |
+| **Frontend** | React 18, TypeScript, Vite 5, React Router 6, Tailwind/CSS |
+| **Backend** | Spring Boot 3.1.5, MyBatis, Java 17 |
+| **Recommendation** | Python 3, FastAPI, scikit-learn (TF-IDF + Cosine Sim) |
+| **Database/Cache** | MySQL 8.0, Redis (for high-speed GET queries) |
+| **Message Queue** | Apache Kafka + Zookeeper (for async POST ratings) |
+| **Observability** | Prometheus, Grafana, Zipkin, Micrometer |
+| **Containerization** | Docker, Docker Compose |
+| **Load Testing** | Locust (Python) |
+| **CI/CD** | GitHub Actions → Packer AMI build → AWS deployment |
 
 ---
 
 ## Features
 
-- 🔍 **Movie Search** — Search by title (fuzzy match) across 87K+ movies
-- 🎬 **Movie Detail** — View genres, average rating (from 32M ratings), IMDb & TMDB links
-- 🖼️ **Movie Posters** — Real poster images fetched from TMDB API
-- ✨ **Smart Recommendations** — Content-based filtering using genre cosine similarity
-- 🔐 **User Authentication** — Register / Login with JWT tokens
-- 🌙 **Dark Theme UI** — Modern glassmorphism design with animations
+- 🚀 **High Concurrency Ready** — Uses **Redis** caching for read-heavy operations and **Kafka** message queues for asynchronous, non-blocking writes.
+- 📊 **Full-Stack Observability** — Integrated with Prometheus for metrics, Grafana for beautiful dashboards (JVM, DB pools, HTTP requests), and Zipkin for distributed request tracing.
+- 🔍 **Movie Search** — Search by title across 87K+ movies.
+- 🎬 **Movie Detail** — View genres, average rating, IMDb & TMDB links.
+- 🖼️ **Movie Posters** — Real poster images fetched from TMDB API.
+- ✨ **Smart Recommendations** — Content-based filtering using genre cosine similarity.
+- 🔐 **User Authentication** — Register / Login with JWT tokens.
+- 🌙 **Modern UI** — Glassmorphism design with animations.
+
+---
+
+## CI/CD Pipeline (GitHub Actions)
+
+This project features a fully automated Continuous Integration and Continuous Deployment pipeline using **GitHub Actions**.
+
+1. **Continuous Integration (CI)**: 
+   - On every `git push`, a GitHub runner spins up an Ubuntu environment.
+   - Installs **Java 17** and runs `mvn clean package` to build the Spring Boot `.jar` artifact.
+   - Installs **Node.js 20** and runs `npm run build` to compile the React/Vite frontend into static files.
+2. **Continuous Deployment (CD)**:
+   - The compiled artifacts are passed to the **HashiCorp Packer** job.
+   - Packer uses AWS credentials to launch a temporary EC2 builder instance in `us-east-1`.
+   - It pre-installs the Python environment, configures Nginx, and registers the Java and FastAPI apps as `systemd` background services.
+   - Finally, it bakes a production-ready **Amazon Machine Image (AMI)**, allowing infinite Auto-Scaling on AWS without any manual configuration.
 
 ---
 

@@ -16,11 +16,12 @@ import java.util.Set;
 public class JwtInterceptor implements HandlerInterceptor {
     private final JwtUtil jwtUtil;
 
-    // Whitelisted endpoints that do not require authentication
     private static final Set<String> ALLOWED_PATHS = Set.of(
             "/v1/healthcheck",
             "/v1/login",
-            "/v1/register"
+            "/v1/register",
+            "/v1/rating",
+            "/error"
     );
 
     @Autowired
@@ -33,7 +34,7 @@ public class JwtInterceptor implements HandlerInterceptor {
         String requestPath = request.getRequestURI();
 
         // Allow requests to specific public endpoints
-        if (ALLOWED_PATHS.contains(requestPath)) {
+        if (ALLOWED_PATHS.contains(requestPath) || requestPath.startsWith("/v1/movie/")) {
             return true;
         }
 

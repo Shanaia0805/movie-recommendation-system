@@ -8,11 +8,13 @@ import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+import os
+
 DB_CONFIG = {
-    "host": "127.0.0.1",
-    "user": "root",
-    "password": "",
-    "database": "recommend",
+    "host": os.getenv("DB_HOST", "mysql"),
+    "user": os.getenv("DB_USERNAME", "root"),
+    "password": os.getenv("DB_PASSWORD", "CineVault2024!"),
+    "database": os.getenv("DB_NAME", "movie_db"),
 }
 
 # Global state — built once on startup
@@ -25,19 +27,24 @@ def build_model():
     """Load all movies from MySQL and build the genre similarity matrix."""
     global _movie_ids, _movie_map, _similarity
 
-    conn = mysql.connector.connect(**DB_CONFIG)
-    cursor = conn.cursor(dictionary=True)
+    try:
+        conn = mysql.connector.connect(**DB_CONFIG)
+        cursor = conn.cursor(dictionary=True)
 
-    cursor.execute("""
-        SELECT m.movieId, m.title, GROUP_CONCAT(g.genre ORDER BY g.genre SEPARATOR '|') AS genres
-        FROM movies m
-        JOIN movies_genres mg ON m.movieId = mg.movieId
-        JOIN genres g ON mg.genreId = g.genreId
-        GROUP BY m.movieId, m.title
-    """)
-    rows = cursor.fetchall()
-    cursor.close()
-    conn.close()
+        cursor.execute("""
+            SELECT m.movieId, m.title, GROUP_CONCAT(g.genre ORDER BY g.genre SEPARATOR '|') AS genres
+            FROM movies m
+            JOIN movies_genres mg ON m.movieId = mg.movieId
+            JOIN genres g ON mg.genreId = g.genreId
+            GROUP BY m.movieId, m.title
+        """)
+        rows = cursor.fetchall()
+        cursor.close()
+        conn.close()
+    except Exception as e:
+        print(f"⚠️ Could not build model: {e}")
+        print("💡 The local database might be empty or tables are missing.")
+        rows = []
 
     _movie_ids = [r["movieId"] for r in rows]
     _movie_map = {

@@ -21,6 +21,28 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
 
+    @Autowired
+    private com.lexiao.assignment2.services.RatingMessagingService ratingMessagingService;
+
+    @PostMapping("/rating")
+    public ResponseEntity<?> rateMovie(@RequestBody Map<String, Object> payload) {
+        try {
+            int userId = Integer.parseInt(payload.get("userId").toString());
+            int movieId = Integer.parseInt(payload.get("movieId").toString());
+            double rating = Double.parseDouble(payload.get("rating").toString());
+
+            // 核心：异步发送消息
+            ratingMessagingService.sendRating(userId, movieId, rating);
+
+            return ResponseEntity.ok(Map.of(
+                "message", "Rating submitted successfully (Async via Kafka)",
+                "status", "processing"
+            ));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Invalid rating data"));
+        }
+    }
+
     @GetMapping("/movies/search")
     public ResponseEntity<?> searchMovies(@RequestParam("q") String q) {
         if (q == null || q.trim().length() < 2) {

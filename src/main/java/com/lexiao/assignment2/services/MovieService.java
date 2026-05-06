@@ -5,6 +5,7 @@ import com.lexiao.assignment2.entities.Movie;
 import com.lexiao.assignment2.mappers.MovieMapper;
 import com.lexiao.assignment2.mappers.RatingMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -25,6 +26,7 @@ public class MovieService {
     }
 
     // Keeping the same names you used in your earlier files to avoid any conflicts
+    @Cacheable(value = "movies", key = "#movieId")
     public List<Movie> getMovieById(int movieId) {
         List<Movie> movies = movieMapper.findMovieWithGenresById(movieId);
         for (Movie movie : movies) {
@@ -38,6 +40,7 @@ public class MovieService {
     }
 
 
+    @Cacheable(value = "ratings", key = "#movieId")
     public Double getAverageRating(int movieId) {
         return ratingMapper.findAverageRating(movieId);  // Match with RatingMapper method
     }
